@@ -17,7 +17,11 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">TouchGameWall</div>
+      </div>
     </div>
     <script>
 
@@ -55,9 +59,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/OikosKidsTouch.loader.js";
       var config = {
-        dataUrl: buildUrl + "/OikosKidsTouch.data.unityweb",
-        frameworkUrl: buildUrl + "/OikosKidsTouch.framework.js.unityweb",
-        codeUrl: buildUrl + "/OikosKidsTouch.wasm.unityweb",
+        dataUrl: buildUrl + "/OikosKidsTouch.data",
+        frameworkUrl: buildUrl + "/OikosKidsTouch.framework.js",
+        codeUrl: buildUrl + "/OikosKidsTouch.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "OIKOS",
         productName: "TouchGameWall",
@@ -103,7 +107,9 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-                
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
               }).catch((message) => {
                 alert(message);
               });
